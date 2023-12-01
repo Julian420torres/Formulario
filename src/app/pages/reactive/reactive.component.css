@@ -1,0 +1,8 @@
+.animated-button {
+    transition: background-color 0.3s ease;
+  }
+  
+  .animated-button:disabled {
+    background-color: #dddddd;  /* Cambia este color al color que prefieras cuando esté deshabilitado */
+    cursor: not-allowed;
+  }

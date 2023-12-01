@@ -1,0 +1,118 @@
+<h4>Formularios <small> Reactivos </small></h4>
+<hr>
+<form autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()">
+
+  <div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Nombre:</label>
+      <div class="col">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Nombre"
+               formControlName="nombre"
+               [class.is-invalid]="nombreNoValido" >
+
+               <small *ngIf="nombreNoValido" class="text-danger">
+                Ingresar 5 letras
+               </small>
+               
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Apellido:</label>
+      <div class="col">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Apellido"
+               formControlName="apellido"
+               [class.is-invalid]="apellidoNoValido">
+
+               <small *ngIf="apellidoNoValido" class="text-danger">
+                Ingresar 5 letras
+               </small>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo:</label>
+    <div class="col">
+
+      <input class="form-control"
+             type="email"
+             placeholder="Correo electrónico"
+             formControlName="correo"
+             [class.is-invalid]="correoNoValido">  <!--aqui se llama la funcion de ts para que los campos se pongan en rojo-->
+
+             <small *ngIf="correoNoValido" class="text-danger">
+              Correo Invalido
+             </small>
+
+      </div>
+             
+    </div>
+
+    <div class="form-group row" formGroupName="direccion">
+      <label class="col-2 col-form-label">Direccion:</label>
+      <div class="form-row col">
+
+
+        <div class="col">
+
+          <input type="text"
+                 class="form-control"
+                 placeholder="Distrito"
+                 formControlName="distrito"
+                 [class.is-invalid]="distritoNoValido" >
+
+                 <small *ngIf="correoNoValido" class="text-danger">
+                  Digita el Distrito
+                 </small>
+        
+                </div>
+        
+                <div class="col">
+          
+                  <input type="text"
+                 class="form-control" 
+                 placeholder="Ciudad"
+                 formControlName="ciudad"
+                 [class.is-invalid]="ciudadNoValido" >
+
+                 <small *ngIf="correoNoValido" class="text-danger">
+                  Digita tu Ciudad
+                 </small>
+        </div>
+      </div>
+    </div>
+    
+    
+<div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col">
+      <button type="submit" class="btn btn-outline-primary btn-block animated-button" [disabled]="forma.invalid">
+        Guardar
+      </button>  <!--disabled es para que el boton se desabilite cuando no se han llenado todos los campos -->
+    </div>
+  </div>
+
+</form>
+
+
+<hr>    <!--sirve para estar pendiente de los cambios del formulario-->
+<pre>   <!--sirve para poner codigo-->
+  Estado del formulario: {{ forma.valid }} 
+  <br>
+  Status: {{ forma.status }}
+</pre>
+
+<pre>
+
+  {{ forma.value | json }}
+
+</pre>
